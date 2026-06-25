@@ -6,6 +6,16 @@
 <title>NUR-TRANS — аренда премиум авто, автобусов и вертолётов в Казахстане</title>
 <meta name="description" content="Аренда транспорта премиум, бизнес и эконом класса, джипы, минивены, микроавтобусы, автобусы 28-59 мест и вертолёты. С водителем и без. Астана, Алматы, Шымкент, Туркестан. Круглосуточно. +7 776 666-66-48">
 <meta name="theme-color" content="#0B0E12">
+<meta property="og:type" content="website">
+<meta property="og:locale" content="ru_RU">
+<meta property="og:site_name" content="NUR-TRANS">
+<meta property="og:title" content="NUR-TRANS — аренда премиум транспорта по Казахстану">
+<meta property="og:description" content="От эконома до Rolls-Royce и Maybach, автобусы 28-59 мест и вертолёты. С водителем и без, круглосуточно. Астана, Алматы, Шымкент, Туркестан.">
+<meta property="og:image" content="https://images.satu.kz/220727141_w640_h640_arenda-prokat-avto.jpg">
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:title" content="NUR-TRANS — аренда премиум транспорта по Казахстану">
+<meta name="twitter:description" content="От эконома до Rolls-Royce и Maybach, автобусы и вертолёты. С водителем и без, круглосуточно.">
+<meta name="twitter:image" content="https://images.satu.kz/220727141_w640_h640_arenda-prokat-avto.jpg">
 <link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230E1116'/%3E%3Crect%20x='3.5'%20y='3.5'%20width='57'%20height='57'%20rx='11'%20fill='none'%20stroke='%23C9A86A'%20stroke-width='1.5'/%3E%3Ctext%20x='32'%20y='44.5'%20font-family='Georgia,%20serif'%20font-size='37'%20font-weight='700'%20fill='%23C9A86A'%20text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230E1116'/%3E%3Ctext%20x='32'%20y='44.5'%20font-family='Georgia,%20serif'%20font-size='37'%20font-weight='700'%20fill='%23C9A86A'%20text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
 <link rel="preconnect" href="https://fonts.googleapis.com">
@@ -25,7 +35,7 @@
     --wa:#25D366;
     --text:#F2F0EA;
     --muted:rgba(242,240,234,.62);
-    --muted-2:rgba(242,240,234,.42);
+    --muted-2:rgba(242,240,234,.52);
     --r:16px;
     --maxw:1220px;
   }
@@ -220,6 +230,10 @@
   .fab--call{background:linear-gradient(180deg,var(--brass-bright),var(--brass));color:#16120A}
   @keyframes pulse{0%{box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 0 rgba(37,211,102,0)}}
 
+  /* Mobile sticky CTA bar */
+  .mobilebar{position:fixed;left:0;right:0;bottom:0;z-index:65;display:none;gap:10px;padding:10px 12px calc(10px + env(safe-area-inset-bottom));background:rgba(8,11,15,.94);backdrop-filter:blur(14px);border-top:1px solid var(--line-brass)}
+  .mobilebar .btn{flex:1;min-height:50px}
+
   /* Footer */
   footer{background:#070A0D;padding:62px 0 28px;border-top:1px solid var(--line)}
   .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:34px;border-bottom:1px solid var(--line)}
@@ -257,6 +271,9 @@
     .mobile-menu a{display:block;padding:16px 24px;color:#fff;font-weight:600;border-bottom:1px solid var(--line)}
     .mobile-menu .mm-cta{display:flex;gap:12px;padding:18px 24px}
     .mobile-menu .mm-cta .btn{flex:1}
+    .floating{display:none}
+    .mobilebar{display:flex}
+    body{padding-bottom:72px}
   }
   @media(max-width:560px){
     .grid{grid-template-columns:repeat(2,1fr);gap:12px}
@@ -595,6 +612,18 @@
   </a>
 </div>
 
+<!-- MOBILE STICKY CTA -->
+<div class="mobilebar">
+  <a href="tel:+77766666648" class="btn btn--ghost">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+    Позвонить
+  </a>
+  <a href="https://wa.me/77766666648" target="_blank" rel="noopener" class="btn btn--wa">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2z"/></svg>
+    WhatsApp
+  </a>
+</div>
+
 <script>
 (function(){
   "use strict";
@@ -644,7 +673,7 @@
     {c:"business",n:"Toyota Camry 50/55 (2013-2017)",p:"от 4 166",u:"₸/час",i:"235441950_w640_h640_prokat-arenda-toyota.jpg"},
     {c:"crossover",n:"Toyota RAV4 / Renault Duster / Nissan Qashqai / Hyundai Santa Fe / Kia Sorento",p:"от 6 666",u:"₸/час",i:"235442455_w640_h640_prokat-arenda-toyota.jpg"},
     {c:"economy",n:"Hyundai Accent / Hyundai Elantra / Kia Rio",p:"от 3 333",u:"₸/час",i:"235408666_w640_h640_prokat-arenda-hyundai.jpg"},
-    {c:"minivan",n:"Toyota Vellfire (без водителя)",p:"35 000",u:"₸",i:"241731499_w640_h640_arenda-toyota-vellfire.jpg"},
+    {c:"minivan",n:"Toyota Vellfire (без водителя)",p:"от 35 000",u:"₸/сутки",i:"241731499_w640_h640_arenda-toyota-vellfire.jpg"},
     {c:"minivan",n:"Toyota Alphard (рестайлинг)",p:"от 16 666",u:"₸/час",i:"241731515_w640_h640_prokat-arenda-toyota.jpg"},
     {c:"minivan",n:"Hyundai Staria NEW",p:"от 13 333",u:"₸/час",i:"235442391_w640_h640_prokat-arenda-hyundai.jpg"},
     {c:"minivan",n:"Toyota Hiace (рестайлинг)",p:"от 11 666",u:"₸/час",i:"241731489_w640_h640_prokat-arenda-toyota.jpg"},
@@ -679,10 +708,12 @@
   function cardHTML(v){
     var msg = "Здравствуйте! Интересует аренда: "+v.n+" ("+v.p+" "+v.u+"). Подскажите наличие и условия.";
     var wa = "https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
+    var img640 = IMG + v.i;
+    var img280 = IMG + v.i.replace("_w640_h640_","_w280_h300_");
     return '<article class="card">'+
       '<div class="card-media">'+
         '<span class="card-tag">'+esc(LABEL[v.c]||"")+'</span>'+
-        '<img loading="lazy" src="'+IMG+v.i+'" alt="'+esc(v.n)+'">'+
+        '<img loading="lazy" src="'+img640+'" data-fb="'+img280+'" onerror="this.onerror=null;this.src=this.dataset.fb" alt="'+esc(v.n)+'">'+
       '</div>'+
       '<div class="card-body">'+
         '<div class="card-name">'+esc(v.n)+'</div>'+
@@ -773,6 +804,28 @@
     document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
   }
 })();
+</script>
+<script type="application/ld+json">
+{
+  "@context": "https://schema.org",
+  "@type": "AutoRental",
+  "name": "NUR-TRANS",
+  "description": "Аренда транспорта премиум, бизнес и эконом класса, джипы, минивены, микроавтобусы, автобусы 28-59 мест и вертолёты. С водителем и без, круглосуточно.",
+  "image": "https://images.satu.kz/220727141_w640_h640_arenda-prokat-avto.jpg",
+  "telephone": "+77766666648",
+  "email": "transport.vip@mail.ru",
+  "foundingDate": "2015",
+  "priceRange": "₸₸₸",
+  "openingHours": "Mo-Su 00:00-24:00",
+  "address": {
+    "@type": "PostalAddress",
+    "streetAddress": "Сарайшык 38, офис №4",
+    "addressLocality": "Астана",
+    "addressCountry": "KZ"
+  },
+  "areaServed": ["Астана", "Алматы", "Шымкент", "Туркестан"],
+  "sameAs": ["https://www.instagram.com/nur_trans_kz/"]
+}
 </script>
 </body>
 </html>
