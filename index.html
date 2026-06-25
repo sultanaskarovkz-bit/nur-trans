@@ -83,7 +83,7 @@
   /* Hero */
   .hero{position:relative;background:var(--ink);overflow:hidden;isolation:isolate}
   .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(1100px 560px at 80% -8%,rgba(201,168,106,.20),transparent 58%),radial-gradient(820px 620px at 8% 116%,rgba(201,168,106,.08),transparent 60%),linear-gradient(180deg,#090C10,#11161D)}
-  .hero-img{position:absolute;top:0;right:0;height:100%;width:54%;z-index:-1;object-fit:cover;object-position:center;opacity:.4;-webkit-mask-image:linear-gradient(90deg,transparent,#000 58%);mask-image:linear-gradient(90deg,transparent,#000 58%)}
+  .hero-img{position:absolute;top:0;right:0;height:100%;width:min(54%,1000px);z-index:-1;object-fit:cover;object-position:center;opacity:.42;-webkit-mask-image:linear-gradient(90deg,transparent,#000 52%);mask-image:linear-gradient(90deg,transparent,#000 52%)}
   .hero-inner{padding:clamp(116px,17vh,182px) 0 clamp(60px,9vw,104px);max-width:780px}
   .hero h1{font-size:clamp(2.35rem,6vw,4.6rem);line-height:1.05;letter-spacing:-.012em;margin:.42em 0 .46em}
   .hero h1 .br{color:var(--brass-bright)}
@@ -315,7 +315,7 @@
 <!-- HERO -->
 <section class="hero" id="top">
   <img class="hero-img" src="https://images.satu.kz/220727141_w640_h640_arenda-prokat-avto.jpg" alt="" aria-hidden="true">
-  <div class="wrap hero-inner">
+  <div class="wrap"><div class="hero-inner">
     <span class="eyebrow" style="color:var(--brass-bright)">NUR-TRANS · с 2015 года</span>
     <h1 class="serif">Аренда транспорта <span class="br">премиум-класса</span> по всему Казахстану</h1>
     <p class="lead">От седанов эконом-класса до Rolls-Royce и Maybach, автобусы на 28-59 мест и вертолёты. С водителем и без, круглосуточно, в Астане, Алматы, Шымкенте и Туркестане.</p>
@@ -335,7 +335,7 @@
       <div class="stat"><div class="n">4</div><div class="l">города присутствия</div></div>
       <div class="stat"><div class="n">24/7</div><div class="l">приём заявок и подача</div></div>
     </div>
-  </div>
+  </div></div>
 </section>
 
 <!-- STRIP -->
@@ -616,58 +616,58 @@
   var LABEL = {premium:"Премиум",jeep:"Джип",business:"Бизнес",crossover:"Кроссовер",economy:"Эконом",minivan:"Минивен",microbus:"Микроавтобус",bus:"Автобус",heli:"Вертолёт"};
 
   var F = [
-    {c:"premium",n:"Rolls-Royce",p:"от 50 000",u:"₸/час",i:"233904454_w280_h300_prokat-avto-rolls.jpg"},
-    {c:"premium",n:"Mercedes-Maybach S-class W223 (новый)",p:"от 75 000",u:"₸/час",i:"237056002_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"premium",n:"Mercedes S500 W223 (2021-2024)",p:"от 41 666",u:"₸/час",i:"235409390_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"premium",n:"Mercedes-Benz Maybach (2015-2018)",p:"от 28 333",u:"₸/час",i:"235385959_w280_h300_prokat-arenda-mercedes-benz.jpg"},
-    {c:"premium",n:"Mercedes S-class W222 рестайлинг (2017-2019)",p:"от 18 333",u:"₸/час",i:"242035050_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"premium",n:"Lexus LS460 / BMW 740 / Audi A8 (2013-2018)",p:"от 17 500",u:"₸/час",i:"235409384_w280_h300_prokat-arenda-.jpg"},
-    {c:"premium",n:"Bentley (2007-2011)",p:"от 16 666",u:"₸/час",i:"235396950_w280_h300_prokat-arenda-bentley.jpg"},
-    {c:"premium",n:"Mercedes S500 W222 (2013-2015)",p:"от 15 000",u:"₸/час",i:"235409416_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"premium",n:"Cadillac Escalade (2016-2019)",p:"от 15 000",u:"₸/час",i:"235409340_w280_h300_prokat-arenda-cadillac.jpg"},
-    {c:"premium",n:"Mercedes S500 W221 (2008-2013)",p:"от 8 333",u:"₸/час",i:"235402346_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"jeep",n:"Mercedes-Benz G-class (Гелендваген) (2020-2022)",p:"от 50 000",u:"₸/час",i:"235409406_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"jeep",n:"Lexus LX600 (2022-2024)",p:"от 33 333",u:"₸/час",i:"235409409_w280_h300_prokat-arenda-lexus.jpg"},
-    {c:"jeep",n:"Cadillac Escalade (2020-2024)",p:"от 33 333",u:"₸/час",i:"235425135_w280_h300_prokat-arenda-cadillac.jpg"},
-    {c:"jeep",n:"Mercedes-Benz G-class (Гелендваген) (2016-2018)",p:"от 25 000",u:"₸/час",i:"235425231_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"jeep",n:"Toyota Land Cruiser 300 (2021-2024)",p:"от 19 166",u:"₸/час",i:"235409361_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"jeep",n:"Lexus LX570 (2016-2020)",p:"от 14 166",u:"₸/час",i:"235409393_w280_h300_prokat-arenda-lexus.jpg"},
-    {c:"jeep",n:"Toyota Land Cruiser 200 (2016-2020)",p:"от 14 166",u:"₸/час",i:"242033884_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"jeep",n:"Toyota Land Cruiser Prado 150",p:"от 9 166",u:"₸/час",i:"235442367_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"jeep",n:"Lexus LX570 (2011-2015)",p:"от 8 333",u:"₸/час",i:"235434099_w280_h300_prokat-arenda-lexus.jpg"},
-    {c:"jeep",n:"Toyota Land Cruiser 200 (2008-2015)",p:"от 8 333",u:"₸/час",i:"242033776_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"jeep",n:"Mercedes-Benz G-class (Гелендваген) (2005-2011)",p:"от 8 333",u:"₸/час",i:"235425158_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"jeep",n:"Toyota Land Cruiser Prado 150 (2010-2016)",p:"от 6 666",u:"₸/час",i:"235406478_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"business",n:"Toyota Camry 80 (2024-2025)",p:"от 8 333",u:"₸/час",i:"235441825_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"business",n:"Toyota Camry 70/75 (2018-2023)",p:"от 5 833",u:"₸/час",i:"235385028_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"business",n:"Lexus GS / Kia K5-K7 / Hyundai Sonata",p:"от 5 833",u:"₸/час",i:"235442579_w280_h300_prokat-arenda-lexus.jpg"},
-    {c:"business",n:"Toyota Camry 50/55 (2013-2017)",p:"от 4 166",u:"₸/час",i:"235441950_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"crossover",n:"Toyota RAV4 / Renault Duster / Nissan Qashqai / Hyundai Santa Fe / Kia Sorento",p:"от 6 666",u:"₸/час",i:"235442455_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"economy",n:"Hyundai Accent / Hyundai Elantra / Kia Rio",p:"от 3 333",u:"₸/час",i:"235408666_w280_h300_prokat-arenda-hyundai.jpg"},
-    {c:"minivan",n:"Toyota Vellfire (без водителя)",p:"35 000",u:"₸",i:"241731499_w280_h300_arenda-toyota-vellfire.jpg"},
-    {c:"minivan",n:"Toyota Alphard (рестайлинг)",p:"от 16 666",u:"₸/час",i:"241731515_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"minivan",n:"Hyundai Staria NEW",p:"от 13 333",u:"₸/час",i:"235442391_w280_h300_prokat-arenda-hyundai.jpg"},
-    {c:"minivan",n:"Toyota Hiace (рестайлинг)",p:"от 11 666",u:"₸/час",i:"241731489_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"minivan",n:"Toyota Hiace",p:"от 7 500",u:"₸/час",i:"241731488_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"minivan",n:"Hyundai Starex",p:"от 7 500",u:"₸/час",i:"235442296_w280_h300_prokat-arenda-hyundai.jpg"},
-    {c:"minivan",n:"Toyota Alphard / Sienna / Honda Odyssey (2007-2012)",p:"от 5 833",u:"₸/час",i:"241731497_w280_h300_prokat-arenda-toyota.jpg"},
-    {c:"microbus",n:"Mercedes V-class (2022-2024)",p:"от 29 166",u:"₸/час",i:"235442797_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"microbus",n:"Mercedes Sprinter NEW 2023",p:"от 22 500",u:"₸/час",i:"241731430_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"microbus",n:"Mercedes V-class (2015-2019)",p:"от 14 166",u:"₸/час",i:"235384875_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"microbus",n:"Mercedes Sprinter LUX",p:"от 13 333",u:"₸/час",i:"241731416_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"microbus",n:"Mercedes Sprinter",p:"от 11 666",u:"₸/час",i:"241731402_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"microbus",n:"Volkswagen Crafter",p:"от 10 833",u:"₸/час",i:"241731389_w280_h300_prokat-arenda-volkswagen.jpg"},
-    {c:"microbus",n:"Hyundai Starex (рестайлинг)",p:"от 8 333",u:"₸/час",i:"241731467_w280_h300_prokat-arenda-hyundai.jpg"},
-    {c:"microbus",n:"Mercedes Vito (2010-2013)",p:"от 6 666",u:"₸/час",i:"241731530_w280_h300_prokat-arenda-mercedes.jpg"},
-    {c:"bus",n:"Автобус Mercedes (50 мест)",p:"от 18 333",u:"₸/час",i:"235393517_w280_h300_prokat-arenda-avtobus.jpg"},
-    {c:"bus",n:"Автобус Iveco (59 мест)",p:"от 15 000",u:"₸/час",i:"235393593_w280_h300_prokat-arenda-avtobus.jpg"},
-    {c:"bus",n:"Автобус Volvo / Van Hool / Neoplan / Setra (50 мест)",p:"от 15 000",u:"₸/час",i:"235393560_w280_h300_prokat-arenda-avtobus.jpg"},
-    {c:"bus",n:"Автобус Daewoo BS (45 мест)",p:"от 13 333",u:"₸/час",i:"235393629_w280_h300_prokat-arenda-daewoo.jpg"},
-    {c:"bus",n:"Автобус Toyota Coaster (28 мест)",p:"от 11 666",u:"₸/час",i:"241729669_w280_h300_prokat-arenda-avtobus.jpg"},
-    {c:"bus",n:"Автобус Mercedes Vario (28 мест)",p:"от 11 666",u:"₸/час",i:"241731376_w280_h300_prokat-arenda-avtobus.jpg"},
-    {c:"heli",n:"Вертолёт Ми-8 (10-14 мест)",p:"от 2 000 000",u:"₸/час",i:"235385967_w280_h300_prokat-arenda-mi.jpg"},
-    {c:"heli",n:"Вертолёт Agusta / Eurocopter (5-7 мест)",p:"от 1 500 000",u:"₸/час",i:"235393768_w280_h300_prokat-arenda-vertolet.jpg"},
-    {c:"heli",n:"Вертолёт Robinson R44 (3 места)",p:"от 800 000",u:"₸/час",i:"235393809_w280_h300_prokat-arenda-vertolet.jpg"}
+    {c:"premium",n:"Rolls-Royce",p:"от 50 000",u:"₸/час",i:"233904454_w640_h640_prokat-avto-rolls.jpg"},
+    {c:"premium",n:"Mercedes-Maybach S-class W223 (новый)",p:"от 75 000",u:"₸/час",i:"237056002_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"premium",n:"Mercedes S500 W223 (2021-2024)",p:"от 41 666",u:"₸/час",i:"235409390_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"premium",n:"Mercedes-Benz Maybach (2015-2018)",p:"от 28 333",u:"₸/час",i:"235385959_w640_h640_prokat-arenda-mercedes-benz.jpg"},
+    {c:"premium",n:"Mercedes S-class W222 рестайлинг (2017-2019)",p:"от 18 333",u:"₸/час",i:"242035050_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"premium",n:"Lexus LS460 / BMW 740 / Audi A8 (2013-2018)",p:"от 17 500",u:"₸/час",i:"235409384_w640_h640_prokat-arenda-.jpg"},
+    {c:"premium",n:"Bentley (2007-2011)",p:"от 16 666",u:"₸/час",i:"235396950_w640_h640_prokat-arenda-bentley.jpg"},
+    {c:"premium",n:"Mercedes S500 W222 (2013-2015)",p:"от 15 000",u:"₸/час",i:"235409416_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"premium",n:"Cadillac Escalade (2016-2019)",p:"от 15 000",u:"₸/час",i:"235409340_w640_h640_prokat-arenda-cadillac.jpg"},
+    {c:"premium",n:"Mercedes S500 W221 (2008-2013)",p:"от 8 333",u:"₸/час",i:"235402346_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"jeep",n:"Mercedes-Benz G-class (Гелендваген) (2020-2022)",p:"от 50 000",u:"₸/час",i:"235409406_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"jeep",n:"Lexus LX600 (2022-2024)",p:"от 33 333",u:"₸/час",i:"235409409_w640_h640_prokat-arenda-lexus.jpg"},
+    {c:"jeep",n:"Cadillac Escalade (2020-2024)",p:"от 33 333",u:"₸/час",i:"235425135_w640_h640_prokat-arenda-cadillac.jpg"},
+    {c:"jeep",n:"Mercedes-Benz G-class (Гелендваген) (2016-2018)",p:"от 25 000",u:"₸/час",i:"235425231_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser 300 (2021-2024)",p:"от 19 166",u:"₸/час",i:"235409361_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"jeep",n:"Lexus LX570 (2016-2020)",p:"от 14 166",u:"₸/час",i:"235409393_w640_h640_prokat-arenda-lexus.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser 200 (2016-2020)",p:"от 14 166",u:"₸/час",i:"242033884_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser Prado 150",p:"от 9 166",u:"₸/час",i:"235442367_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"jeep",n:"Lexus LX570 (2011-2015)",p:"от 8 333",u:"₸/час",i:"235434099_w640_h640_prokat-arenda-lexus.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser 200 (2008-2015)",p:"от 8 333",u:"₸/час",i:"242033776_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"jeep",n:"Mercedes-Benz G-class (Гелендваген) (2005-2011)",p:"от 8 333",u:"₸/час",i:"235425158_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser Prado 150 (2010-2016)",p:"от 6 666",u:"₸/час",i:"235406478_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"business",n:"Toyota Camry 80 (2024-2025)",p:"от 8 333",u:"₸/час",i:"235441825_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"business",n:"Toyota Camry 70/75 (2018-2023)",p:"от 5 833",u:"₸/час",i:"235385028_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"business",n:"Lexus GS / Kia K5-K7 / Hyundai Sonata",p:"от 5 833",u:"₸/час",i:"235442579_w640_h640_prokat-arenda-lexus.jpg"},
+    {c:"business",n:"Toyota Camry 50/55 (2013-2017)",p:"от 4 166",u:"₸/час",i:"235441950_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"crossover",n:"Toyota RAV4 / Renault Duster / Nissan Qashqai / Hyundai Santa Fe / Kia Sorento",p:"от 6 666",u:"₸/час",i:"235442455_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"economy",n:"Hyundai Accent / Hyundai Elantra / Kia Rio",p:"от 3 333",u:"₸/час",i:"235408666_w640_h640_prokat-arenda-hyundai.jpg"},
+    {c:"minivan",n:"Toyota Vellfire (без водителя)",p:"35 000",u:"₸",i:"241731499_w640_h640_arenda-toyota-vellfire.jpg"},
+    {c:"minivan",n:"Toyota Alphard (рестайлинг)",p:"от 16 666",u:"₸/час",i:"241731515_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"minivan",n:"Hyundai Staria NEW",p:"от 13 333",u:"₸/час",i:"235442391_w640_h640_prokat-arenda-hyundai.jpg"},
+    {c:"minivan",n:"Toyota Hiace (рестайлинг)",p:"от 11 666",u:"₸/час",i:"241731489_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"minivan",n:"Toyota Hiace",p:"от 7 500",u:"₸/час",i:"241731488_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"minivan",n:"Hyundai Starex",p:"от 7 500",u:"₸/час",i:"235442296_w640_h640_prokat-arenda-hyundai.jpg"},
+    {c:"minivan",n:"Toyota Alphard / Sienna / Honda Odyssey (2007-2012)",p:"от 5 833",u:"₸/час",i:"241731497_w640_h640_prokat-arenda-toyota.jpg"},
+    {c:"microbus",n:"Mercedes V-class (2022-2024)",p:"от 29 166",u:"₸/час",i:"235442797_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Mercedes Sprinter NEW 2023",p:"от 22 500",u:"₸/час",i:"241731430_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Mercedes V-class (2015-2019)",p:"от 14 166",u:"₸/час",i:"235384875_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Mercedes Sprinter LUX",p:"от 13 333",u:"₸/час",i:"241731416_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Mercedes Sprinter",p:"от 11 666",u:"₸/час",i:"241731402_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Volkswagen Crafter",p:"от 10 833",u:"₸/час",i:"241731389_w640_h640_prokat-arenda-volkswagen.jpg"},
+    {c:"microbus",n:"Hyundai Starex (рестайлинг)",p:"от 8 333",u:"₸/час",i:"241731467_w640_h640_prokat-arenda-hyundai.jpg"},
+    {c:"microbus",n:"Mercedes Vito (2010-2013)",p:"от 6 666",u:"₸/час",i:"241731530_w640_h640_prokat-arenda-mercedes.jpg"},
+    {c:"bus",n:"Автобус Mercedes (50 мест)",p:"от 18 333",u:"₸/час",i:"235393517_w640_h640_prokat-arenda-avtobus.jpg"},
+    {c:"bus",n:"Автобус Iveco (59 мест)",p:"от 15 000",u:"₸/час",i:"235393593_w640_h640_prokat-arenda-avtobus.jpg"},
+    {c:"bus",n:"Автобус Volvo / Van Hool / Neoplan / Setra (50 мест)",p:"от 15 000",u:"₸/час",i:"235393560_w640_h640_prokat-arenda-avtobus.jpg"},
+    {c:"bus",n:"Автобус Daewoo BS (45 мест)",p:"от 13 333",u:"₸/час",i:"235393629_w640_h640_prokat-arenda-daewoo.jpg"},
+    {c:"bus",n:"Автобус Toyota Coaster (28 мест)",p:"от 11 666",u:"₸/час",i:"241729669_w640_h640_prokat-arenda-avtobus.jpg"},
+    {c:"bus",n:"Автобус Mercedes Vario (28 мест)",p:"от 11 666",u:"₸/час",i:"241731376_w640_h640_prokat-arenda-avtobus.jpg"},
+    {c:"heli",n:"Вертолёт Ми-8 (10-14 мест)",p:"от 2 000 000",u:"₸/час",i:"235385967_w640_h640_prokat-arenda-mi.jpg"},
+    {c:"heli",n:"Вертолёт Agusta / Eurocopter (5-7 мест)",p:"от 1 500 000",u:"₸/час",i:"235393768_w640_h640_prokat-arenda-vertolet.jpg"},
+    {c:"heli",n:"Вертолёт Robinson R44 (3 места)",p:"от 800 000",u:"₸/час",i:"235393809_w640_h640_prokat-arenda-vertolet.jpg"}
   ];
 
   function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
