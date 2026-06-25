@@ -1,0 +1,778 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+<title>NUR-TRANS — аренда премиум авто, автобусов и вертолётов в Казахстане</title>
+<meta name="description" content="Аренда транспорта премиум, бизнес и эконом класса, джипы, минивены, микроавтобусы, автобусы 28-59 мест и вертолёты. С водителем и без. Астана, Алматы, Шымкент, Туркестан. Круглосуточно. +7 776 666-66-48">
+<meta name="theme-color" content="#0B0E12">
+<link rel="icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230E1116'/%3E%3Crect%20x='3.5'%20y='3.5'%20width='57'%20height='57'%20rx='11'%20fill='none'%20stroke='%23C9A86A'%20stroke-width='1.5'/%3E%3Ctext%20x='32'%20y='44.5'%20font-family='Georgia,%20serif'%20font-size='37'%20font-weight='700'%20fill='%23C9A86A'%20text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="apple-touch-icon" href="data:image/svg+xml,%3Csvg%20xmlns='http://www.w3.org/2000/svg'%20viewBox='0%200%2064%2064'%3E%3Crect%20width='64'%20height='64'%20rx='14'%20fill='%230E1116'/%3E%3Ctext%20x='32'%20y='44.5'%20font-family='Georgia,%20serif'%20font-size='37'%20font-weight='700'%20fill='%23C9A86A'%20text-anchor='middle'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Manrope:wght@400;500;600;700;800&family=Prata&display=swap" rel="stylesheet">
+<style>
+  :root{
+    --bg:#0B0E12;
+    --ink:#0E1116;
+    --surface:#14181E;
+    --surface-2:#1B212B;
+    --line:rgba(255,255,255,.09);
+    --line-brass:rgba(201,168,106,.22);
+    --brass:#C9A86A;
+    --brass-bright:#E6CE97;
+    --brass-deep:#A8854A;
+    --wa:#25D366;
+    --text:#F2F0EA;
+    --muted:rgba(242,240,234,.62);
+    --muted-2:rgba(242,240,234,.42);
+    --r:16px;
+    --maxw:1220px;
+  }
+  *{box-sizing:border-box;margin:0;padding:0}
+  html{scroll-behavior:smooth;-webkit-text-size-adjust:100%}
+  body{
+    font-family:'Manrope',system-ui,-apple-system,'Segoe UI',sans-serif;
+    background:var(--bg);color:var(--text);line-height:1.62;
+    -webkit-font-smoothing:antialiased;overflow-x:hidden;
+  }
+  .wrap{max-width:var(--maxw);margin:0 auto;padding:0 clamp(18px,4vw,34px)}
+  .serif{font-family:'Prata',Georgia,'Times New Roman',serif;font-weight:400}
+  .mono{font-family:'JetBrains Mono',ui-monospace,monospace}
+  a{color:inherit;text-decoration:none}
+  img{display:block;max-width:100%}
+  section{scroll-margin-top:84px}
+  .eyebrow{font-family:'JetBrains Mono',monospace;font-size:.72rem;letter-spacing:.28em;text-transform:uppercase;color:var(--brass)}
+
+  .section{padding:clamp(58px,9vw,120px) 0;position:relative}
+  .section--tight{padding:clamp(44px,6vw,80px) 0}
+  .hairline{border-top:1px solid var(--line)}
+  .glow-top::before{content:"";position:absolute;top:0;left:50%;transform:translateX(-50%);width:min(900px,90vw);height:320px;background:radial-gradient(60% 100% at 50% 0,rgba(201,168,106,.10),transparent 70%);pointer-events:none}
+
+  /* Buttons */
+  .btn{display:inline-flex;align-items:center;justify-content:center;gap:.55em;font-weight:700;font-size:.96rem;line-height:1;padding:.95em 1.55em;border-radius:999px;border:1px solid transparent;cursor:pointer;transition:transform .18s,background .18s,box-shadow .18s,border-color .18s,color .18s;white-space:nowrap;min-height:46px}
+  .btn svg{width:1.05em;height:1.05em;flex:none}
+  .btn--brass{background:linear-gradient(180deg,var(--brass-bright),var(--brass));color:#16120A;box-shadow:0 8px 26px rgba(201,168,106,.28)}
+  .btn--brass:hover{transform:translateY(-2px);box-shadow:0 12px 32px rgba(201,168,106,.42)}
+  .btn--ghost{background:rgba(255,255,255,.02);color:var(--text);border-color:rgba(255,255,255,.22)}
+  .btn--ghost:hover{border-color:var(--brass);color:var(--brass-bright);transform:translateY(-2px)}
+  .btn--wa{background:var(--wa);color:#05381c}
+  .btn--wa:hover{background:#2ee676;transform:translateY(-2px)}
+  .btn--block{width:100%}
+  :focus-visible{outline:2px solid var(--brass);outline-offset:3px;border-radius:6px}
+
+  /* Header */
+  header{position:fixed;inset:0 0 auto 0;z-index:60;transition:background .3s,box-shadow .3s,backdrop-filter .3s}
+  header.scrolled{background:rgba(8,11,15,.82);backdrop-filter:blur(14px);box-shadow:0 1px 0 var(--line)}
+  .nav{display:flex;align-items:center;gap:26px;height:74px}
+  .logo{display:flex;align-items:baseline;gap:.02em;font-size:1.46rem;letter-spacing:.05em;color:#fff;font-family:'Prata',serif}
+  .logo .dot{color:var(--brass);padding:0 .12em}
+  .nav-links{display:flex;gap:24px;margin-left:auto}
+  .nav-links a{font-size:.92rem;font-weight:600;color:rgba(255,255,255,.8);transition:color .15s}
+  .nav-links a:hover{color:var(--brass-bright)}
+  .nav-cta{display:flex;align-items:center;gap:14px}
+  .nav-phone{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:.96rem;color:#fff;white-space:nowrap;transition:color .15s}
+  .nav-phone:hover{color:var(--brass-bright)}
+  .burger{display:none;background:none;border:0;cursor:pointer;width:42px;height:42px;flex-direction:column;justify-content:center;align-items:center;gap:5px;margin-left:auto}
+  .burger span{display:block;width:22px;height:2px;background:#fff;border-radius:2px;transition:.25s}
+  .burger.open span:nth-child(1){transform:translateY(7px) rotate(45deg)}
+  .burger.open span:nth-child(2){opacity:0}
+  .burger.open span:nth-child(3){transform:translateY(-7px) rotate(-45deg)}
+  .mobile-menu{display:none}
+
+  /* Hero */
+  .hero{position:relative;background:var(--ink);overflow:hidden;isolation:isolate}
+  .hero::before{content:"";position:absolute;inset:0;z-index:-2;background:radial-gradient(1100px 560px at 80% -8%,rgba(201,168,106,.20),transparent 58%),radial-gradient(820px 620px at 8% 116%,rgba(201,168,106,.08),transparent 60%),linear-gradient(180deg,#090C10,#11161D)}
+  .hero-img{position:absolute;top:0;right:0;height:100%;width:54%;z-index:-1;object-fit:cover;object-position:center;opacity:.4;-webkit-mask-image:linear-gradient(90deg,transparent,#000 58%);mask-image:linear-gradient(90deg,transparent,#000 58%)}
+  .hero-inner{padding:clamp(116px,17vh,182px) 0 clamp(60px,9vw,104px);max-width:780px}
+  .hero h1{font-size:clamp(2.35rem,6vw,4.6rem);line-height:1.05;letter-spacing:-.012em;margin:.42em 0 .46em}
+  .hero h1 .br{color:var(--brass-bright)}
+  .hero .lead{font-size:clamp(1.04rem,1.7vw,1.28rem);color:var(--muted);max-width:640px;margin-bottom:2.1em}
+  .hero-cta{display:flex;flex-wrap:wrap;gap:13px;margin-bottom:clamp(40px,6vw,64px)}
+  .stats{display:grid;grid-template-columns:repeat(4,auto);gap:clamp(24px,5vw,58px);border-top:1px solid var(--line);padding-top:30px}
+  .stat .n{font-family:'JetBrains Mono',monospace;font-size:clamp(1.5rem,3vw,2.2rem);color:var(--brass-bright);line-height:1}
+  .stat .l{font-size:.83rem;color:var(--muted);margin-top:.55em;max-width:150px}
+
+  /* Strip */
+  .strip{background:var(--surface);border-top:1px solid var(--line);border-bottom:1px solid var(--line);overflow:hidden}
+  .strip-track{display:flex;gap:44px;padding:15px 0;white-space:nowrap;width:max-content;animation:scrollx 40s linear infinite}
+  .strip-track span{font-family:'JetBrains Mono',monospace;font-size:.8rem;letter-spacing:.16em;text-transform:uppercase;color:var(--muted-2)}
+  .strip-track span::before{content:"◆";color:var(--brass);margin-right:44px;font-size:.55em;vertical-align:middle}
+  @keyframes scrollx{to{transform:translateX(-50%)}}
+
+  /* Section heads */
+  .head{max-width:740px;margin-bottom:clamp(34px,5vw,56px)}
+  .head.center{margin-inline:auto;text-align:center}
+  .head h2{font-size:clamp(1.85rem,4vw,3rem);line-height:1.09;letter-spacing:-.01em;margin:.5em 0}
+  .head .rule{width:54px;height:2px;background:var(--brass);margin-top:.2em}
+  .head.center .rule{margin-inline:auto}
+  .head p{color:var(--muted);font-size:1.04rem;margin-top:1.1em}
+
+  /* Benefits */
+  .benefits{display:grid;grid-template-columns:repeat(3,1fr);gap:1px;background:var(--line);border:1px solid var(--line);border-radius:var(--r);overflow:hidden}
+  .ben{background:var(--ink);padding:32px 30px;transition:background .2s}
+  .ben:hover{background:var(--surface)}
+  .ben .ico{width:34px;height:34px;color:var(--brass);margin-bottom:16px}
+  .ben h3{font-size:1.12rem;font-weight:700;margin-bottom:.42em}
+  .ben p{color:var(--muted);font-size:.94rem}
+
+  /* Catalog */
+  .tabs{display:flex;gap:9px;flex-wrap:wrap;margin-bottom:14px}
+  .tab{font-family:'JetBrains Mono',monospace;font-size:.79rem;letter-spacing:.03em;padding:.66em 1.05em;border-radius:999px;border:1px solid var(--line);background:var(--surface);color:var(--muted);cursor:pointer;transition:.16s;display:inline-flex;gap:.5em;align-items:center;min-height:40px}
+  .tab .cnt{color:var(--brass)}
+  .tab:hover{border-color:var(--brass);color:var(--text)}
+  .tab.active{background:linear-gradient(180deg,var(--brass-bright),var(--brass));color:#16120A;border-color:transparent;font-weight:700}
+  .tab.active .cnt{color:#16120A}
+
+  .cat-block{margin-top:clamp(40px,5vw,60px)}
+  .cat-head{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;flex-wrap:wrap;padding-bottom:18px;border-bottom:1px solid var(--line-brass);margin-bottom:26px}
+  .cat-head h3{font-size:clamp(1.4rem,2.6vw,2rem);line-height:1.1}
+  .cat-desc{color:var(--muted);font-size:.92rem;margin-top:.45em;max-width:560px}
+  .cat-meta{display:flex;gap:10px;align-items:center;flex:none}
+  .cat-meta .pill{font-family:'JetBrains Mono',monospace;font-size:.74rem;padding:.5em .85em;border-radius:999px;white-space:nowrap}
+  .cat-meta .cnt{border:1px solid var(--line);color:var(--muted)}
+  .cat-meta .from{background:rgba(201,168,106,.12);color:var(--brass-bright);border:1px solid var(--line-brass)}
+
+  .grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(244px,1fr));gap:20px}
+  .card{background:var(--surface);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;display:flex;flex-direction:column;transition:transform .2s,box-shadow .2s,border-color .2s}
+  .card:hover{transform:translateY(-6px);box-shadow:0 22px 46px rgba(0,0,0,.45);border-color:var(--line-brass)}
+  .card-media{position:relative;aspect-ratio:4/3;overflow:hidden;background:#10141a}
+  .card-media img{width:100%;height:100%;object-fit:cover;transition:transform .55s ease}
+  .card:hover .card-media img{transform:scale(1.06)}
+  .card-media::after{content:"";position:absolute;inset:0;background:linear-gradient(180deg,transparent 55%,rgba(11,14,18,.5));pointer-events:none}
+  .card-tag{position:absolute;left:12px;top:12px;z-index:1;font-family:'JetBrains Mono',monospace;font-size:.64rem;letter-spacing:.12em;text-transform:uppercase;background:rgba(8,11,15,.78);color:var(--brass-bright);padding:.42em .72em;border-radius:7px;backdrop-filter:blur(4px);border:1px solid var(--line-brass)}
+  .card-body{padding:18px 18px 20px;display:flex;flex-direction:column;flex:1}
+  .card-name{font-weight:700;font-size:.99rem;line-height:1.34;min-height:2.7em;margin-bottom:.6em;color:var(--text)}
+  .card-price{margin-bottom:1.05em}
+  .card-price .ot{display:block;font-family:'JetBrains Mono',monospace;font-size:.62rem;letter-spacing:.14em;text-transform:uppercase;color:var(--brass-deep);margin-bottom:.3em}
+  .card-price .val{font-family:'JetBrains Mono',monospace;font-weight:500;font-size:1.22rem;color:var(--brass-bright)}
+  .card-price .u{color:var(--muted-2);font-size:.68em;font-weight:400}
+  .card-actions{margin-top:auto;display:flex;gap:8px}
+  .card-actions .btn{padding:.78em 1em;font-size:.85rem;flex:1;min-height:42px}
+  .card-call{flex:none;width:44px;min-height:42px;border:1px solid var(--line);border-radius:999px;display:inline-flex;align-items:center;justify-content:center;color:var(--text);transition:.16s}
+  .card-call:hover{border-color:var(--brass);color:var(--brass-bright)}
+  .card-call svg{width:18px;height:18px}
+  .cat-note{margin-top:clamp(34px,4vw,48px);font-size:.94rem;color:var(--muted)}
+  .cat-note a{color:var(--brass-bright);font-weight:700;border-bottom:1px solid var(--brass)}
+
+  /* Use cases */
+  .uses{display:grid;grid-template-columns:repeat(4,1fr);gap:16px}
+  .use{border:1px solid var(--line);border-radius:var(--r);padding:26px 22px;background:var(--ink);transition:.18s}
+  .use:hover{border-color:var(--line-brass);transform:translateY(-4px);background:var(--surface)}
+  .use .ico{width:30px;height:30px;color:var(--brass);margin-bottom:14px}
+  .use h3{font-size:1.03rem;font-weight:700;margin-bottom:.32em}
+  .use p{font-size:.89rem;color:var(--muted)}
+
+  /* Steps */
+  .steps{display:grid;grid-template-columns:repeat(4,1fr);gap:24px}
+  .step{border-top:2px solid var(--brass);padding-top:22px}
+  .step .num{font-family:'JetBrains Mono',monospace;font-size:.82rem;color:var(--brass);letter-spacing:.1em}
+  .step h3{font-size:1.18rem;font-weight:700;margin:.7em 0 .4em}
+  .step p{color:var(--muted);font-size:.94rem}
+
+  /* Video */
+  .video-frame{position:relative;max-width:940px;margin:0 auto;border:1px solid var(--line-brass);border-radius:18px;overflow:hidden;background:#000}
+  .video-ratio{position:relative;width:100%;aspect-ratio:16/9}
+  .video-ratio iframe{position:absolute;inset:0;width:100%;height:100%;border:0}
+
+  /* Geography */
+  .geo{display:grid;grid-template-columns:1.05fr .95fr;gap:42px;align-items:center}
+  .cities{display:grid;grid-template-columns:repeat(2,1fr);gap:13px;margin-top:6px}
+  .city{border:1px solid var(--line);border-radius:13px;padding:18px 20px;background:var(--ink);transition:.18s}
+  .city:hover{border-color:var(--line-brass)}
+  .city .nm{font-weight:700;font-size:1.06rem}
+  .city .tag{font-family:'JetBrains Mono',monospace;font-size:.68rem;letter-spacing:.1em;text-transform:uppercase;color:var(--brass);margin-top:.35em}
+  .city .ad{font-size:.85rem;color:var(--muted);margin-top:.3em}
+  .map-box{border-radius:var(--r);overflow:hidden;border:1px solid var(--line);aspect-ratio:4/3;min-height:280px}
+  .map-box iframe{width:100%;height:100%;border:0;filter:grayscale(.35) invert(.9) hue-rotate(180deg) contrast(.9)}
+
+  /* Contact */
+  .contact-grid{display:grid;grid-template-columns:1.02fr .98fr;gap:46px}
+  .form-card{background:var(--surface);border:1px solid var(--line-brass);border-radius:18px;padding:clamp(24px,4vw,38px)}
+  .form-card h3{font-size:1.5rem;margin-bottom:.2em}
+  .form-card .sub{color:var(--muted);font-size:.95rem;margin-bottom:1.5em}
+  .field{margin-bottom:14px}
+  .field label{display:block;font-size:.8rem;color:var(--muted);margin-bottom:.42em;font-weight:600}
+  .field input,.field select,.field textarea{width:100%;background:rgba(255,255,255,.035);border:1px solid var(--line);border-radius:11px;padding:.85em .95em;color:#fff;font-family:inherit;font-size:.96rem;transition:border-color .15s;min-height:46px}
+  .field textarea{resize:vertical;min-height:76px}
+  .field input::placeholder,.field textarea::placeholder{color:var(--muted-2)}
+  .field input:focus,.field select:focus,.field textarea:focus{outline:none;border-color:var(--brass)}
+  .field select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='12' height='8' viewBox='0 0 12 8'%3E%3Cpath d='M1 1l5 5 5-5' stroke='%23C9A86A' stroke-width='1.6' fill='none' stroke-linecap='round'/%3E%3C/svg%3E");background-repeat:no-repeat;background-position:right 1em center}
+  .field select option{background:#161B22;color:#fff}
+  .form-note{font-size:.79rem;color:var(--muted-2);margin-top:1em;text-align:center}
+  .info h3{font-size:1.5rem;margin-bottom:.9em}
+  .info-row{display:flex;gap:14px;padding:15px 0;border-bottom:1px solid var(--line);align-items:flex-start}
+  .info-row:last-of-type{border-bottom:0}
+  .info-row .ico{width:22px;height:22px;color:var(--brass);flex:none;margin-top:3px}
+  .info-row .k{font-size:.72rem;color:var(--muted-2);text-transform:uppercase;letter-spacing:.1em}
+  .info-row .v{font-weight:600;font-size:1.01rem}
+  .info-row .v a:hover{color:var(--brass-bright)}
+  .info-row .v.mono{font-family:'JetBrains Mono',monospace;font-weight:500}
+  .pay-badges{display:flex;flex-wrap:wrap;gap:8px;margin-top:18px}
+  .pay-badges span{font-family:'JetBrains Mono',monospace;font-size:.73rem;border:1px solid var(--line);border-radius:999px;padding:.42em .8em;color:var(--muted)}
+
+  /* Floating */
+  .floating{position:fixed;right:16px;bottom:calc(16px + env(safe-area-inset-bottom));z-index:70;display:flex;flex-direction:column;gap:12px}
+  .fab{width:54px;height:54px;border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:transform .18s;color:#fff}
+  .fab:hover{transform:scale(1.08)}
+  .fab svg{width:25px;height:25px}
+  .fab--wa{background:var(--wa);animation:pulse 2.6s infinite}
+  .fab--call{background:linear-gradient(180deg,var(--brass-bright),var(--brass));color:#16120A}
+  @keyframes pulse{0%{box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 0 rgba(37,211,102,.5)}70%{box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 14px rgba(37,211,102,0)}100%{box-shadow:0 8px 24px rgba(0,0,0,.4),0 0 0 0 rgba(37,211,102,0)}}
+
+  /* Footer */
+  footer{background:#070A0D;padding:62px 0 28px;border-top:1px solid var(--line)}
+  .foot-top{display:flex;justify-content:space-between;gap:40px;flex-wrap:wrap;padding-bottom:34px;border-bottom:1px solid var(--line)}
+  .foot-brand{max-width:360px}
+  .foot-brand .logo{margin-bottom:14px}
+  .foot-brand p{color:var(--muted);font-size:.93rem}
+  .foot-col h4{font-size:.76rem;text-transform:uppercase;letter-spacing:.14em;color:var(--brass);margin-bottom:14px}
+  .foot-col a,.foot-col p{display:block;color:rgba(255,255,255,.74);font-size:.93rem;margin-bottom:9px;transition:color .15s}
+  .foot-col a:hover{color:var(--brass-bright)}
+  .foot-col .mono{font-family:'JetBrains Mono',monospace}
+  .foot-bottom{padding-top:22px;display:flex;justify-content:space-between;gap:16px;flex-wrap:wrap;font-size:.83rem;color:var(--muted-2)}
+
+  .reveal{opacity:0;transform:translateY(22px);transition:opacity .6s ease,transform .6s ease}
+  .reveal.in{opacity:1;transform:none}
+
+  /* Responsive */
+  @media(max-width:980px){
+    .benefits{grid-template-columns:repeat(2,1fr)}
+    .uses,.steps{grid-template-columns:repeat(2,1fr)}
+    .geo,.contact-grid{grid-template-columns:1fr;gap:30px}
+    .hero-img{width:64%;opacity:.28}
+  }
+  @media(max-width:760px){
+    .nav-links,.nav-phone,.nav-cta .btn{display:none}
+    .burger{display:flex}
+    .hero-img{display:none}
+    .stats{grid-template-columns:repeat(2,1fr);gap:24px 26px}
+    .stat .l{max-width:none}
+    .tabs{flex-wrap:nowrap;overflow-x:auto;padding-bottom:10px;margin-bottom:8px;scrollbar-width:none}
+    .tabs::-webkit-scrollbar{display:none}
+    .tab{flex:none}
+    .cat-head{align-items:flex-start}
+    .mobile-menu{display:block;position:fixed;inset:74px 0 auto 0;z-index:55;background:rgba(8,11,15,.98);backdrop-filter:blur(14px);transform:translateY(-130%);transition:transform .32s ease;border-bottom:1px solid var(--line)}
+    .mobile-menu.open{transform:translateY(0)}
+    .mobile-menu a{display:block;padding:16px 24px;color:#fff;font-weight:600;border-bottom:1px solid var(--line)}
+    .mobile-menu .mm-cta{display:flex;gap:12px;padding:18px 24px}
+    .mobile-menu .mm-cta .btn{flex:1}
+  }
+  @media(max-width:560px){
+    .grid{grid-template-columns:repeat(2,1fr);gap:12px}
+    .card-body{padding:14px 13px 16px}
+    .card-name{font-size:.9rem;min-height:2.6em}
+    .card-price .val{font-size:1.05rem}
+    .card-actions{flex-direction:column}
+    .card-call{width:100%}
+    .benefits,.uses{grid-template-columns:1fr}
+    .cities{grid-template-columns:1fr}
+    .foot-top{gap:28px}
+  }
+  @media(max-width:600px){.steps{grid-template-columns:1fr}}
+  @media(prefers-reduced-motion:reduce){
+    *{animation:none !important;scroll-behavior:auto}
+    .reveal{opacity:1;transform:none;transition:none}
+    .card:hover,.use:hover,.btn:hover,.fab:hover{transform:none}
+  }
+</style>
+</head>
+<body>
+
+<header id="header">
+  <div class="wrap nav">
+    <a href="#top" class="logo">NUR<span class="dot">·</span>TRANS</a>
+    <nav class="nav-links">
+      <a href="#fleet">Автопарк</a>
+      <a href="#uses">Услуги</a>
+      <a href="#how">Как заказать</a>
+      <a href="#geo">География</a>
+      <a href="#contact">Контакты</a>
+    </nav>
+    <div class="nav-cta">
+      <a href="tel:+77766666648" class="nav-phone">+7 776 666-66-48</a>
+      <a href="https://wa.me/77766666648" target="_blank" rel="noopener" class="btn btn--brass">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.31-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.37-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.81 1.98.88 2.13.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.29-.12.57.17.29.74 1.22 1.59 1.97 1.09.97 2.01 1.27 2.3 1.42.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.14.26.09 1.67.79 1.96.93.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+        WhatsApp
+      </a>
+    </div>
+    <button class="burger" id="burger" aria-label="Меню"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<div class="mobile-menu" id="mobileMenu">
+  <a href="#fleet">Автопарк</a>
+  <a href="#uses">Услуги</a>
+  <a href="#how">Как заказать</a>
+  <a href="#geo">География</a>
+  <a href="#contact">Контакты</a>
+  <div class="mm-cta">
+    <a href="tel:+77766666648" class="btn btn--ghost">Позвонить</a>
+    <a href="https://wa.me/77766666648" target="_blank" rel="noopener" class="btn btn--wa">WhatsApp</a>
+  </div>
+</div>
+
+<!-- HERO -->
+<section class="hero" id="top">
+  <img class="hero-img" src="https://images.satu.kz/220727141_w640_h640_arenda-prokat-avto.jpg" alt="" aria-hidden="true">
+  <div class="wrap hero-inner">
+    <span class="eyebrow" style="color:var(--brass-bright)">NUR-TRANS · с 2015 года</span>
+    <h1 class="serif">Аренда транспорта <span class="br">премиум-класса</span> по всему Казахстану</h1>
+    <p class="lead">От седанов эконом-класса до Rolls-Royce и Maybach, автобусы на 28-59 мест и вертолёты. С водителем и без, круглосуточно, в Астане, Алматы, Шымкенте и Туркестане.</p>
+    <div class="hero-cta">
+      <a href="tel:+77766666648" class="btn btn--brass">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+        Позвонить
+      </a>
+      <a href="https://wa.me/77766666648?text=%D0%97%D0%B4%D1%80%D0%B0%D0%B2%D1%81%D1%82%D0%B2%D1%83%D0%B9%D1%82%D0%B5!%20%D0%A5%D0%BE%D1%87%D1%83%20%D0%B0%D1%80%D0%B5%D0%BD%D0%B4%D0%BE%D0%B2%D0%B0%D1%82%D1%8C%20%D1%82%D1%80%D0%B0%D0%BD%D1%81%D0%BF%D0%BE%D1%80%D1%82.%20%D0%9F%D0%BE%D0%B4%D1%81%D0%BA%D0%B0%D0%B6%D0%B8%D1%82%D0%B5%20%D1%83%D1%81%D0%BB%D0%BE%D0%B2%D0%B8%D1%8F." target="_blank" rel="noopener" class="btn btn--ghost">
+        <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2z"/></svg>
+        Написать в WhatsApp
+      </a>
+    </div>
+    <div class="stats">
+      <div class="stat"><div class="n">2015</div><div class="l">год основания компании</div></div>
+      <div class="stat"><div class="n">9</div><div class="l">классов транспорта в автопарке</div></div>
+      <div class="stat"><div class="n">4</div><div class="l">города присутствия</div></div>
+      <div class="stat"><div class="n">24/7</div><div class="l">приём заявок и подача</div></div>
+    </div>
+  </div>
+</section>
+
+<!-- STRIP -->
+<div class="strip" aria-hidden="true">
+  <div class="strip-track" id="strip">
+    <span>Rolls-Royce</span><span>Mercedes-Maybach</span><span>Bentley</span><span>Gelendwagen</span><span>Land Cruiser 300</span><span>Lexus LX600</span><span>Cadillac Escalade</span><span>Mercedes Sprinter</span><span>Автобусы 59 мест</span><span>Вертолёты</span><span>Лимузины</span>
+  </div>
+</div>
+
+<!-- BENEFITS -->
+<section class="section glow-top">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Почему NUR-TRANS</span>
+      <h2 class="serif">Свой автопарк и сервис без компромиссов</h2>
+      <div class="rule"></div>
+      <p>Мы предоставляем автотранспортные услуги с 2015 года: от деловых поездок до крупных мероприятий местного и международного уровня.</p>
+    </div>
+    <div class="benefits reveal">
+      <div class="ben">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M3 13l2-6h14l2 6M5 13h14v5H5zM7 18v2M17 18v2" stroke-linecap="round" stroke-linejoin="round"/><circle cx="7.5" cy="15.5" r="1"/><circle cx="16.5" cy="15.5" r="1"/></svg>
+        <h3>Собственный автопарк</h3>
+        <p>Большой выбор от эконома до премиум-класса, автобусов и вертолётов. Нужный транспорт всегда в наличии.</p>
+      </div>
+      <div class="ben">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="8" r="3.4"/><path d="M5 20c0-3.6 3.1-6 7-6s7 2.4 7 6" stroke-linecap="round"/></svg>
+        <h3>С водителем и без</h3>
+        <p>Опытные вежливые водители со знанием маршрутов или аренда авто без водителя, на ваш выбор.</p>
+      </div>
+      <div class="ben">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l7 3v5c0 4.5-3 8-7 10-4-2-7-5.5-7-10V6z" stroke-linejoin="round"/><path d="M9 12l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Все авто застрахованы</h3>
+        <p>Комплексная мойка и технический осмотр перед каждой подачей. Машины подаются в опрятном виде.</p>
+      </div>
+      <div class="ben">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+        <h3>Работаем круглосуточно</h3>
+        <p>Приём заявок и подача транспорта 24/7, без выходных. Оперативно работаем с каждым заказом.</p>
+      </div>
+      <div class="ben">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="10" r="3"/><path d="M12 2c4.4 0 8 3.4 8 7.6 0 5-8 12.4-8 12.4S4 14.6 4 9.6C4 5.4 7.6 2 12 2z" stroke-linejoin="round"/></svg>
+        <h3>Выезд по всему Казахстану</h3>
+        <p>Почасовая и посуточная аренда, городские и аэропортовые трансферы, междугородние маршруты.</p>
+      </div>
+      <div class="ben">
+        <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3l2.4 5 5.6.5-4.2 3.7 1.3 5.5L12 20l-5.1 2.7 1.3-5.5L4 13.5 9.6 13z" stroke-linejoin="round"/></svg>
+        <h3>Опыт с 2015 года</h3>
+        <p>Участие и проведение крупных мероприятий: форумы, саммиты, EXPO, свадьбы и официальные делегации.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FLEET / CATALOG -->
+<section class="section hairline glow-top" id="fleet">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Автопарк · 52 позиции</span>
+      <h2 class="serif">Транспорт по категориям</h2>
+      <div class="rule"></div>
+      <p>Цены указаны за час аренды. Точную стоимость на ваш маршрут и количество часов уточняйте у менеджера, действует гибкая система скидок.</p>
+    </div>
+    <div class="tabs reveal" id="tabs"></div>
+    <div id="cats"></div>
+    <p class="cat-note reveal">Не нашли подходящий вариант? В наличии также пикапы, лимузины на 8-30 мест и другие модели. <a href="#contact">Напишите нам</a>, подберём под задачу.</p>
+  </div>
+</section>
+
+<!-- USE CASES -->
+<section class="section hairline" id="uses">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Для любого события</span>
+      <h2 class="serif">Поездки, мероприятия и торжества</h2>
+      <div class="rule"></div>
+      <p>Подберём транспорт под формат: от романтического свидания до встречи официальной делегации.</p>
+    </div>
+    <div class="uses reveal">
+      <div class="use"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 21s-7-4.5-7-10a4 4 0 017-2.6A4 4 0 0119 11c0 5.5-7 10-7 10z" stroke-linejoin="round"/></svg><h3>Свадьбы и кортежи</h3><p>Премиум-авто и лимузины для торжественного дня.</p></div>
+      <div class="use"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M12 3v4M8 5l1.5 3M16 5l-1.5 3M5 11h14l-1.5 8h-11z" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Қыз ұзату и той</h3><p>Достойный транспорт для семейных праздников.</p></div>
+      <div class="use"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M5 21V8l7-5 7 5v13M9 21v-6h6v6" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Выписка из роддома</h3><p>Встретим с комфортом в важный для семьи момент.</p></div>
+      <div class="use"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="4" width="18" height="14" rx="2"/><path d="M8 21h8M12 18v3" stroke-linecap="round"/></svg><h3>Форумы, саммиты, EXPO</h3><p>Перевозка участников и гостей деловых событий.</p></div>
+      <div class="use"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="9" cy="8" r="3"/><path d="M2 20c0-3.3 3-5.5 7-5.5M16 7l2 2 4-4" stroke-linecap="round" stroke-linejoin="round"/></svg><h3>Делегации и VIP-гости</h3><p>Представительский транспорт и сопровождение.</p></div>
+      <div class="use"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M21 16l-9 4-9-4M3 11l9-7 9 7-9 4z" stroke-linejoin="round"/></svg><h3>Трансфер аэропорт / вокзал</h3><p>Подача строго по графику, опытный водитель.</p></div>
+      <div class="use"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><rect x="3" y="6" width="18" height="11" rx="2"/><path d="M3 11h18M8 6V4h8v2M8 21v-4M16 21v-4" stroke-linecap="round"/></svg><h3>Корпоративы и тимбилдинг</h3><p>Автобусы и микроавтобусы для всей команды.</p></div>
+      <div class="use"><svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.6"><circle cx="12" cy="12" r="9"/><path d="M3 12h18M12 3c2.5 2.5 2.5 15 0 18M12 3c-2.5 2.5-2.5 15 0 18" stroke-linejoin="round"/></svg><h3>Экскурсии и межгород</h3><p>Поездки по городам и регионам Казахстана.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW -->
+<section class="section hairline" id="how">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Как заказать</span>
+      <h2 class="serif">Четыре шага до подачи транспорта</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="steps reveal">
+      <div class="step"><div class="num">01</div><h3>Заявка</h3><p>Позвоните, напишите в WhatsApp или оставьте заявку на сайте.</p></div>
+      <div class="step"><div class="num">02</div><h3>Согласование</h3><p>Менеджер подберёт транспорт, уточнит условия, сроки и способ оплаты.</p></div>
+      <div class="step"><div class="num">03</div><h3>Предоплата 50%</h3><p>Бронируем авто за вами. Наличный или безналичный расчёт.</p></div>
+      <div class="step"><div class="num">04</div><h3>Подача вовремя</h3><p>Чистый автомобиль и водитель подаются точно в оговоренный срок.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- VIDEO -->
+<section class="section section--tight hairline">
+  <div class="wrap">
+    <div class="head center reveal">
+      <span class="eyebrow">Видео</span>
+      <h2 class="serif">Наш автопарк в деле</h2>
+      <div class="rule"></div>
+    </div>
+    <div class="video-frame reveal">
+      <div class="video-ratio">
+        <iframe src="https://www.youtube-nocookie.com/embed/dyDLLRZKDJg?rel=0&modestbranding=1" title="NUR-TRANS" loading="lazy" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- GEOGRAPHY -->
+<section class="section hairline" id="geo">
+  <div class="wrap geo">
+    <div class="reveal">
+      <span class="eyebrow">География</span>
+      <h2 class="serif" style="font-size:clamp(1.85rem,4vw,3rem);line-height:1.09;margin:.5em 0">Работаем в четырёх городах</h2>
+      <div class="rule" style="width:54px;height:2px;background:var(--brass)"></div>
+      <p style="color:var(--muted);margin:1.1em 0 .3em">Главный офис в Астане, представительства в Алматы, Шымкенте и Туркестане. Выезд по всему Казахстану.</p>
+      <div class="cities">
+        <div class="city"><div class="nm">Астана</div><div class="tag">Главный офис</div><div class="ad">Сарайшык 38, офис №4</div></div>
+        <div class="city"><div class="nm">Алматы</div><div class="tag">Представительство</div><div class="ad">Аренда и подача транспорта</div></div>
+        <div class="city"><div class="nm">Шымкент</div><div class="tag">Представительство</div><div class="ad">Аренда и подача транспорта</div></div>
+        <div class="city"><div class="nm">Туркестан</div><div class="tag">Представительство</div><div class="ad">Аренда и подача транспорта</div></div>
+      </div>
+    </div>
+    <div class="map-box reveal">
+      <iframe src="https://maps.google.com/maps?q=Sarayshyk%2038%20Astana&z=15&output=embed" title="NUR-TRANS на карте, Астана" loading="lazy"></iframe>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section class="section hairline glow-top" id="contact">
+  <div class="wrap">
+    <div class="head reveal">
+      <span class="eyebrow">Контакты</span>
+      <h2 class="serif">Забронируйте транспорт</h2>
+      <div class="rule"></div>
+      <p>Оставьте заявку, и менеджер свяжется с вами, чтобы согласовать детали. Или позвоните, мы на связи круглосуточно.</p>
+    </div>
+    <div class="contact-grid">
+      <div class="form-card reveal">
+        <h3>Оставить заявку</h3>
+        <p class="sub">Заполните форму, заявка отправится нам в WhatsApp.</p>
+        <div class="field"><label for="f-name">Ваше имя</label><input id="f-name" type="text" placeholder="Как к вам обращаться"></div>
+        <div class="field"><label for="f-phone">Телефон</label><input id="f-phone" type="tel" placeholder="+7 ___ ___ __ __"></div>
+        <div class="field"><label for="f-type">Какой транспорт нужен</label>
+          <select id="f-type">
+            <option value="">Выберите класс</option>
+            <option>Премиум-класс</option>
+            <option>Джипы и внедорожники</option>
+            <option>Бизнес-класс</option>
+            <option>Кроссоверы</option>
+            <option>Эконом-класс</option>
+            <option>Минивены</option>
+            <option>Микроавтобусы</option>
+            <option>Автобусы 28-59 мест</option>
+            <option>Вертолёты</option>
+            <option>Лимузин</option>
+            <option>Пока не определился</option>
+          </select>
+        </div>
+        <div class="field"><label for="f-date">Дата и время</label><input id="f-date" type="text" placeholder="Например: 14 июля, 10:00"></div>
+        <div class="field"><label for="f-msg">Комментарий</label><textarea id="f-msg" placeholder="Маршрут, количество часов, пожелания"></textarea></div>
+        <button class="btn btn--wa btn--block" id="sendBtn">
+          <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.31-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.37-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.81 1.98.88 2.13.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.29-.12.57.17.29.74 1.22 1.59 1.97 1.09.97 2.01 1.27 2.3 1.42.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.14.26.09 1.67.79 1.96.93.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+          Отправить в WhatsApp
+        </button>
+        <p class="form-note">Все заказы оформляются с предоплатой 50%.</p>
+      </div>
+
+      <div class="info reveal">
+        <h3>Свяжитесь напрямую</h3>
+        <div class="info-row">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><path d="M6.6 10.8c1.4 2.8 3.8 5.1 6.6 6.6l2.2-2.2c.3-.3.7-.4 1-.2 1.1.4 2.3.6 3.6.6.5 0 1 .4 1 1V20c0 .5-.5 1-1 1-9.4 0-17-7.6-17-17 0-.5.4-1 1-1H8c.6 0 1 .4 1 1 0 1.2.2 2.5.6 3.6.1.3 0 .7-.2 1z" stroke-linejoin="round"/></svg>
+          <div><div class="k">Телефоны</div><div class="v mono"><a href="tel:+77766666648">+7 776 666-66-48</a></div><div class="v mono"><a href="tel:+77020202050">+7 702 020-20-50</a></div></div>
+        </div>
+        <div class="info-row">
+          <svg class="ico" viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2z"/></svg>
+          <div><div class="k">WhatsApp</div><div class="v mono"><a href="https://wa.me/77766666648" target="_blank" rel="noopener">+7 776 666-66-48</a></div></div>
+        </div>
+        <div class="info-row">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M4 7l8 6 8-6" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><div class="k">Эл. почта</div><div class="v"><a href="mailto:transport.vip@mail.ru">transport.vip@mail.ru</a></div></div>
+        </div>
+        <div class="info-row">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle cx="17.5" cy="6.5" r="1.1" fill="currentColor"/></svg>
+          <div><div class="k">Instagram</div><div class="v"><a href="https://www.instagram.com/nur_trans_kz/" target="_blank" rel="noopener">@nur_trans_kz</a></div></div>
+        </div>
+        <div class="info-row">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="10" r="3"/><path d="M12 2c4.4 0 8 3.4 8 7.6 0 5-8 12.4-8 12.4S4 14.6 4 9.6C4 5.4 7.6 2 12 2z" stroke-linejoin="round"/></svg>
+          <div><div class="k">Главный офис</div><div class="v">Сарайшык 38, офис №4, Астана</div></div>
+        </div>
+        <div class="info-row">
+          <svg class="ico" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.7"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3.5 2" stroke-linecap="round" stroke-linejoin="round"/></svg>
+          <div><div class="k">Режим работы</div><div class="v">Круглосуточно, 7 дней в неделю</div></div>
+        </div>
+        <div class="pay-badges">
+          <span>Наличный расчёт</span><span>Безналичный расчёт</span><span>СНР</span><span>ОУР</span><span>с НДС / без НДС</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="wrap">
+    <div class="foot-top">
+      <div class="foot-brand">
+        <a href="#top" class="logo">NUR<span class="dot">·</span>TRANS</a>
+        <p>Аренда транспорта премиум, бизнес и эконом класса, автобусов и вертолётов с 2015 года. С водителем и без, выезд по всему Казахстану.</p>
+      </div>
+      <div class="foot-col">
+        <h4>Навигация</h4>
+        <a href="#fleet">Автопарк</a><a href="#uses">Услуги</a><a href="#how">Как заказать</a><a href="#geo">География</a><a href="#contact">Контакты</a>
+      </div>
+      <div class="foot-col">
+        <h4>Города</h4>
+        <p>Астана</p><p>Алматы</p><p>Шымкент</p><p>Туркестан</p>
+      </div>
+      <div class="foot-col">
+        <h4>Контакты</h4>
+        <a href="tel:+77766666648" class="mono">+7 776 666-66-48</a>
+        <a href="tel:+77020202050" class="mono">+7 702 020-20-50</a>
+        <a href="mailto:transport.vip@mail.ru">transport.vip@mail.ru</a>
+        <a href="https://www.instagram.com/nur_trans_kz/" target="_blank" rel="noopener">@nur_trans_kz</a>
+      </div>
+    </div>
+    <div class="foot-bottom">
+      <span>© 2025 NUR-TRANS. Все права защищены.</span>
+      <span>Работаем круглосуточно · Выезд по всему Казахстану</span>
+    </div>
+  </div>
+</footer>
+
+<!-- FLOATING -->
+<div class="floating">
+  <a href="https://wa.me/77766666648" target="_blank" rel="noopener" class="fab fab--wa" aria-label="Написать в WhatsApp">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M12.04 2C6.58 2 2.13 6.45 2.13 11.91c0 1.75.46 3.45 1.32 4.95L2 22l5.25-1.38c1.45.79 3.08 1.21 4.79 1.21 5.46 0 9.91-4.45 9.91-9.91C21.95 6.45 17.5 2 12.04 2zm5.8 14.01c-.24.68-1.42 1.31-1.95 1.36-.5.05-1.13.07-1.83-.11-.42-.13-.96-.31-1.65-.61-2.9-1.25-4.79-4.17-4.94-4.37-.14-.19-1.18-1.57-1.18-3 0-1.42.75-2.12 1.01-2.41.26-.29.57-.36.76-.36l.55.01c.18.01.41-.07.64.49.24.57.81 1.98.88 2.13.07.14.12.31.02.5-.1.19-.15.31-.29.48-.14.17-.3.38-.43.51-.14.14-.29.29-.12.57.17.29.74 1.22 1.59 1.97 1.09.97 2.01 1.27 2.3 1.42.29.14.46.12.63-.07.17-.19.72-.84.91-1.13.19-.29.38-.24.64-.14.26.09 1.67.79 1.96.93.29.14.48.21.55.33.07.12.07.68-.17 1.36z"/></svg>
+  </a>
+  <a href="tel:+77766666648" class="fab fab--call" aria-label="Позвонить">
+    <svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>
+  </a>
+</div>
+
+<script>
+(function(){
+  "use strict";
+  var WA = "77766666648";
+  var IMG = "https://images.satu.kz/";
+
+  var CATS = [
+    {id:"all",      name:"Все"},
+    {id:"premium",  name:"Премиум",        title:"Премиум-класс",        desc:"Rolls-Royce, Mercedes-Maybach, Bentley, S-class, Cadillac Escalade."},
+    {id:"jeep",     name:"Джипы",          title:"Джипы и внедорожники", desc:"Toyota Land Cruiser, Lexus LX, Mercedes Gelendwagen, Cadillac Escalade."},
+    {id:"business", name:"Бизнес",         title:"Бизнес-класс",         desc:"Toyota Camry, Lexus GS, Kia K5-K7, Hyundai Sonata."},
+    {id:"crossover",name:"Кроссоверы",     title:"Кроссоверы",           desc:"Toyota RAV4, Hyundai Santa Fe, Kia Sorento, Nissan Qashqai, Renault Duster."},
+    {id:"economy",  name:"Эконом",         title:"Эконом-класс",         desc:"Hyundai Accent, Hyundai Elantra, Kia Rio."},
+    {id:"minivan",  name:"Минивены",       title:"Минивены",             desc:"Toyota Alphard и Vellfire, Hyundai Staria, Toyota Hiace, Hyundai Starex."},
+    {id:"microbus", name:"Микроавтобусы",  title:"Микроавтобусы",        desc:"Mercedes Sprinter, V-class, Vito, Volkswagen Crafter."},
+    {id:"bus",      name:"Автобусы",       title:"Автобусы 28-59 мест",  desc:"Mercedes, Iveco, Volvo, Setra, Neoplan, Daewoo, Toyota Coaster."},
+    {id:"heli",     name:"Вертолёты",      title:"Вертолёты",            desc:"Robinson R44, Agusta, Eurocopter, Ми-8. С пилотом."}
+  ];
+  var LABEL = {premium:"Премиум",jeep:"Джип",business:"Бизнес",crossover:"Кроссовер",economy:"Эконом",minivan:"Минивен",microbus:"Микроавтобус",bus:"Автобус",heli:"Вертолёт"};
+
+  var F = [
+    {c:"premium",n:"Rolls-Royce",p:"от 50 000",u:"₸/час",i:"233904454_w280_h300_prokat-avto-rolls.jpg"},
+    {c:"premium",n:"Mercedes-Maybach S-class W223 (новый)",p:"от 75 000",u:"₸/час",i:"237056002_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"premium",n:"Mercedes S500 W223 (2021-2024)",p:"от 41 666",u:"₸/час",i:"235409390_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"premium",n:"Mercedes-Benz Maybach (2015-2018)",p:"от 28 333",u:"₸/час",i:"235385959_w280_h300_prokat-arenda-mercedes-benz.jpg"},
+    {c:"premium",n:"Mercedes S-class W222 рестайлинг (2017-2019)",p:"от 18 333",u:"₸/час",i:"242035050_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"premium",n:"Lexus LS460 / BMW 740 / Audi A8 (2013-2018)",p:"от 17 500",u:"₸/час",i:"235409384_w280_h300_prokat-arenda-.jpg"},
+    {c:"premium",n:"Bentley (2007-2011)",p:"от 16 666",u:"₸/час",i:"235396950_w280_h300_prokat-arenda-bentley.jpg"},
+    {c:"premium",n:"Mercedes S500 W222 (2013-2015)",p:"от 15 000",u:"₸/час",i:"235409416_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"premium",n:"Cadillac Escalade (2016-2019)",p:"от 15 000",u:"₸/час",i:"235409340_w280_h300_prokat-arenda-cadillac.jpg"},
+    {c:"premium",n:"Mercedes S500 W221 (2008-2013)",p:"от 8 333",u:"₸/час",i:"235402346_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"jeep",n:"Mercedes-Benz G-class (Гелендваген) (2020-2022)",p:"от 50 000",u:"₸/час",i:"235409406_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"jeep",n:"Lexus LX600 (2022-2024)",p:"от 33 333",u:"₸/час",i:"235409409_w280_h300_prokat-arenda-lexus.jpg"},
+    {c:"jeep",n:"Cadillac Escalade (2020-2024)",p:"от 33 333",u:"₸/час",i:"235425135_w280_h300_prokat-arenda-cadillac.jpg"},
+    {c:"jeep",n:"Mercedes-Benz G-class (Гелендваген) (2016-2018)",p:"от 25 000",u:"₸/час",i:"235425231_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser 300 (2021-2024)",p:"от 19 166",u:"₸/час",i:"235409361_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"jeep",n:"Lexus LX570 (2016-2020)",p:"от 14 166",u:"₸/час",i:"235409393_w280_h300_prokat-arenda-lexus.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser 200 (2016-2020)",p:"от 14 166",u:"₸/час",i:"242033884_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser Prado 150",p:"от 9 166",u:"₸/час",i:"235442367_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"jeep",n:"Lexus LX570 (2011-2015)",p:"от 8 333",u:"₸/час",i:"235434099_w280_h300_prokat-arenda-lexus.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser 200 (2008-2015)",p:"от 8 333",u:"₸/час",i:"242033776_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"jeep",n:"Mercedes-Benz G-class (Гелендваген) (2005-2011)",p:"от 8 333",u:"₸/час",i:"235425158_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"jeep",n:"Toyota Land Cruiser Prado 150 (2010-2016)",p:"от 6 666",u:"₸/час",i:"235406478_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"business",n:"Toyota Camry 80 (2024-2025)",p:"от 8 333",u:"₸/час",i:"235441825_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"business",n:"Toyota Camry 70/75 (2018-2023)",p:"от 5 833",u:"₸/час",i:"235385028_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"business",n:"Lexus GS / Kia K5-K7 / Hyundai Sonata",p:"от 5 833",u:"₸/час",i:"235442579_w280_h300_prokat-arenda-lexus.jpg"},
+    {c:"business",n:"Toyota Camry 50/55 (2013-2017)",p:"от 4 166",u:"₸/час",i:"235441950_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"crossover",n:"Toyota RAV4 / Renault Duster / Nissan Qashqai / Hyundai Santa Fe / Kia Sorento",p:"от 6 666",u:"₸/час",i:"235442455_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"economy",n:"Hyundai Accent / Hyundai Elantra / Kia Rio",p:"от 3 333",u:"₸/час",i:"235408666_w280_h300_prokat-arenda-hyundai.jpg"},
+    {c:"minivan",n:"Toyota Vellfire (без водителя)",p:"35 000",u:"₸",i:"241731499_w280_h300_arenda-toyota-vellfire.jpg"},
+    {c:"minivan",n:"Toyota Alphard (рестайлинг)",p:"от 16 666",u:"₸/час",i:"241731515_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"minivan",n:"Hyundai Staria NEW",p:"от 13 333",u:"₸/час",i:"235442391_w280_h300_prokat-arenda-hyundai.jpg"},
+    {c:"minivan",n:"Toyota Hiace (рестайлинг)",p:"от 11 666",u:"₸/час",i:"241731489_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"minivan",n:"Toyota Hiace",p:"от 7 500",u:"₸/час",i:"241731488_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"minivan",n:"Hyundai Starex",p:"от 7 500",u:"₸/час",i:"235442296_w280_h300_prokat-arenda-hyundai.jpg"},
+    {c:"minivan",n:"Toyota Alphard / Sienna / Honda Odyssey (2007-2012)",p:"от 5 833",u:"₸/час",i:"241731497_w280_h300_prokat-arenda-toyota.jpg"},
+    {c:"microbus",n:"Mercedes V-class (2022-2024)",p:"от 29 166",u:"₸/час",i:"235442797_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Mercedes Sprinter NEW 2023",p:"от 22 500",u:"₸/час",i:"241731430_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Mercedes V-class (2015-2019)",p:"от 14 166",u:"₸/час",i:"235384875_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Mercedes Sprinter LUX",p:"от 13 333",u:"₸/час",i:"241731416_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Mercedes Sprinter",p:"от 11 666",u:"₸/час",i:"241731402_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"microbus",n:"Volkswagen Crafter",p:"от 10 833",u:"₸/час",i:"241731389_w280_h300_prokat-arenda-volkswagen.jpg"},
+    {c:"microbus",n:"Hyundai Starex (рестайлинг)",p:"от 8 333",u:"₸/час",i:"241731467_w280_h300_prokat-arenda-hyundai.jpg"},
+    {c:"microbus",n:"Mercedes Vito (2010-2013)",p:"от 6 666",u:"₸/час",i:"241731530_w280_h300_prokat-arenda-mercedes.jpg"},
+    {c:"bus",n:"Автобус Mercedes (50 мест)",p:"от 18 333",u:"₸/час",i:"235393517_w280_h300_prokat-arenda-avtobus.jpg"},
+    {c:"bus",n:"Автобус Iveco (59 мест)",p:"от 15 000",u:"₸/час",i:"235393593_w280_h300_prokat-arenda-avtobus.jpg"},
+    {c:"bus",n:"Автобус Volvo / Van Hool / Neoplan / Setra (50 мест)",p:"от 15 000",u:"₸/час",i:"235393560_w280_h300_prokat-arenda-avtobus.jpg"},
+    {c:"bus",n:"Автобус Daewoo BS (45 мест)",p:"от 13 333",u:"₸/час",i:"235393629_w280_h300_prokat-arenda-daewoo.jpg"},
+    {c:"bus",n:"Автобус Toyota Coaster (28 мест)",p:"от 11 666",u:"₸/час",i:"241729669_w280_h300_prokat-arenda-avtobus.jpg"},
+    {c:"bus",n:"Автобус Mercedes Vario (28 мест)",p:"от 11 666",u:"₸/час",i:"241731376_w280_h300_prokat-arenda-avtobus.jpg"},
+    {c:"heli",n:"Вертолёт Ми-8 (10-14 мест)",p:"от 2 000 000",u:"₸/час",i:"235385967_w280_h300_prokat-arenda-mi.jpg"},
+    {c:"heli",n:"Вертолёт Agusta / Eurocopter (5-7 мест)",p:"от 1 500 000",u:"₸/час",i:"235393768_w280_h300_prokat-arenda-vertolet.jpg"},
+    {c:"heli",n:"Вертолёт Robinson R44 (3 места)",p:"от 800 000",u:"₸/час",i:"235393809_w280_h300_prokat-arenda-vertolet.jpg"}
+  ];
+
+  function esc(s){return String(s).replace(/&/g,"&amp;").replace(/</g,"&lt;").replace(/>/g,"&gt;").replace(/"/g,"&quot;");}
+  function num(p){return parseInt(String(p).replace(/\D/g,""),10)||0;}
+  function fmt(n){return String(n).replace(/\B(?=(\d{3})+(?!\d))/g," ");}
+
+  var phoneSvg = '<svg viewBox="0 0 24 24" fill="currentColor"><path d="M6.62 10.79c1.44 2.83 3.76 5.14 6.59 6.59l2.2-2.2c.27-.27.67-.36 1.02-.24 1.12.37 2.33.57 3.57.57.55 0 1 .45 1 1V20c0 .55-.45 1-1 1-9.39 0-17-7.61-17-17 0-.55.45-1 1-1h3.5c.55 0 1 .45 1 1 0 1.25.2 2.45.57 3.57.11.35.03.74-.25 1.02l-2.2 2.2z"/></svg>';
+
+  function cardHTML(v){
+    var msg = "Здравствуйте! Интересует аренда: "+v.n+" ("+v.p+" "+v.u+"). Подскажите наличие и условия.";
+    var wa = "https://wa.me/"+WA+"?text="+encodeURIComponent(msg);
+    return '<article class="card">'+
+      '<div class="card-media">'+
+        '<span class="card-tag">'+esc(LABEL[v.c]||"")+'</span>'+
+        '<img loading="lazy" src="'+IMG+v.i+'" alt="'+esc(v.n)+'">'+
+      '</div>'+
+      '<div class="card-body">'+
+        '<div class="card-name">'+esc(v.n)+'</div>'+
+        '<div class="card-price"><span class="ot">Стоимость</span><span class="val">'+esc(v.p)+' <span class="u">'+esc(v.u)+'</span></span></div>'+
+        '<div class="card-actions">'+
+          '<a class="btn btn--brass" href="'+wa+'" target="_blank" rel="noopener">Заказать</a>'+
+          '<a class="card-call" href="tel:+77766666648" aria-label="Позвонить">'+phoneSvg+'</a>'+
+        '</div>'+
+      '</div>'+
+    '</article>';
+  }
+
+  // Build category blocks (sorted by price desc within each category)
+  var catsEl = document.getElementById("cats");
+  var blocksHTML = "";
+  CATS.filter(function(c){return c.id!=="all";}).forEach(function(cat){
+    var items = F.filter(function(x){return x.c===cat.id;}).slice().sort(function(a,b){return num(b.p)-num(a.p);});
+    if(!items.length) return;
+    var hourly = items.filter(function(x){return x.u==="₸/час";}).map(function(x){return num(x.p);});
+    var minFrom = hourly.length ? Math.min.apply(null,hourly) : num(items[0].p);
+    var fromLabel = "от "+fmt(minFrom)+" ₸/час";
+    blocksHTML += '<div class="cat-block reveal" data-cat="'+cat.id+'">'+
+      '<div class="cat-head">'+
+        '<div><h3 class="serif">'+esc(cat.title)+'</h3><p class="cat-desc">'+esc(cat.desc)+'</p></div>'+
+        '<div class="cat-meta">'+
+          '<span class="pill cnt">'+items.length+' в наличии</span>'+
+          '<span class="pill from">'+fromLabel+'</span>'+
+        '</div>'+
+      '</div>'+
+      '<div class="grid">'+items.map(cardHTML).join("")+'</div>'+
+    '</div>';
+  });
+  catsEl.innerHTML = blocksHTML;
+
+  // Tabs
+  var tabsEl = document.getElementById("tabs");
+  CATS.forEach(function(cat){
+    var cnt = cat.id==="all" ? F.length : F.filter(function(x){return x.c===cat.id;}).length;
+    var b = document.createElement("button");
+    b.className = "tab" + (cat.id==="all"?" active":"");
+    b.setAttribute("data-cat",cat.id);
+    b.innerHTML = esc(cat.name) + ' <span class="cnt">'+cnt+'</span>';
+    b.addEventListener("click",function(){
+      document.querySelectorAll(".tab").forEach(function(t){t.classList.remove("active");});
+      b.classList.add("active");
+      document.querySelectorAll(".cat-block").forEach(function(bl){
+        bl.style.display = (cat.id==="all" || bl.getAttribute("data-cat")===cat.id) ? "" : "none";
+      });
+    });
+    tabsEl.appendChild(b);
+  });
+
+  // Form -> WhatsApp
+  document.getElementById("sendBtn").addEventListener("click",function(){
+    function val(id){var el=document.getElementById(id);return el?el.value.trim():"";}
+    var name=val("f-name"), phone=val("f-phone"), type=val("f-type"), date=val("f-date"), msg=val("f-msg");
+    var lines=["Здравствуйте! Заявка с сайта NUR-TRANS."];
+    if(name) lines.push("Имя: "+name);
+    if(phone) lines.push("Телефон: "+phone);
+    if(type) lines.push("Транспорт: "+type);
+    if(date) lines.push("Дата/время: "+date);
+    if(msg) lines.push("Комментарий: "+msg);
+    window.open("https://wa.me/"+WA+"?text="+encodeURIComponent(lines.join("\n")),"_blank","noopener");
+  });
+
+  // Header scroll
+  var header=document.getElementById("header");
+  function onScroll(){ header.classList.toggle("scrolled", window.scrollY>40); }
+  onScroll(); window.addEventListener("scroll",onScroll,{passive:true});
+
+  // Mobile menu
+  var burger=document.getElementById("burger"), mm=document.getElementById("mobileMenu");
+  burger.addEventListener("click",function(){ var o=mm.classList.toggle("open"); burger.classList.toggle("open",o); });
+  mm.querySelectorAll("a").forEach(function(a){ a.addEventListener("click",function(){ mm.classList.remove("open"); burger.classList.remove("open"); }); });
+
+  // Marquee duplicate
+  var strip=document.getElementById("strip");
+  if(strip) strip.innerHTML += strip.innerHTML;
+
+  // Reveal on scroll
+  var reduce = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+  if(!reduce && "IntersectionObserver" in window){
+    var io=new IntersectionObserver(function(es){
+      es.forEach(function(e){ if(e.isIntersecting){ e.target.classList.add("in"); io.unobserve(e.target);} });
+    },{threshold:.1});
+    document.querySelectorAll(".reveal").forEach(function(el){ io.observe(el); });
+  } else {
+    document.querySelectorAll(".reveal").forEach(function(el){ el.classList.add("in"); });
+  }
+})();
+</script>
+</body>
+</html>
